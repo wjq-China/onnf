@@ -19,29 +19,14 @@ message(STATUS "MLIR_INCLUDE_DIRS in: ${MLIR_INCLUDE_DIRS}")
 include_directories(${LLVM_INCLUDE_DIRS})
 include_directories(${MLIR_INCLUDE_DIRS})
 
+# 设置编译输出目录
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY /home/hacker/Workspace/onnf/build/bin)
+
 # 将LLVM的一些宏定义转换为编译器的宏定义
 separate_arguments(LLVM_DEFINITIONS_LIST NATIVE_COMMAND ${LLVM_DEFINITIONS})
 add_definitions(${LLVM_DEFINITIONS_LIST})
 # message(STATUS "LLVM_DEFINITIONS_LIST in: ${LLVM_DEFINITIONS_LIST}")
 
-add_executable(onnf main.cpp
-)
+add_subdirectory(third_party/onnx)
 
-# target_include_directories(onnx-mlir PRIVATE ${LLVM_INCLUDE_DIRS})
-# target_include_directories(onnx-mlir PRIVATE ${MLIR_INCLUDE_DIRS})
-
-# 查找需要使用的 LLVM 组件 llvm-config --components
-llvm_map_components_to_libnames(llvm_libs all)
-
-# 链接llvm库
-target_link_libraries(onnf ${llvm_libs}    
-    MLIRAffineToStandard
-    MLIRAffine
-    MLIRLLVMIR
-    MLIRStandardOps
-    MLIRStandardToLLVM
-    MLIRTransforms
-    MLIRLoopToStandard
-    MLIRVector
-    MLIRLoopOps)
-        
+add_subdirectory(src)
