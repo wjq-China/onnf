@@ -19,6 +19,40 @@ message(STATUS "MLIR_INCLUDE_DIRS in: ${MLIR_INCLUDE_DIRS}")
 include_directories(${LLVM_INCLUDE_DIRS})
 include_directories(${MLIR_INCLUDE_DIRS})
 
+find_package(Threads REQUIRED)
+set(MLIRLibs
+    MLIRAffine
+    MLIRAffineToStandard
+    MLIRAnalysis
+    MLIRCallInterfaces
+    MLIRControlFlowInterfaces
+    MLIRDialect
+    MLIREDSC
+    MLIRExecutionEngine
+    MLIRIR
+    MLIRLLVMIR
+    MLIRLoopAnalysis
+    MLIRLoopToStandard
+    MLIRLoopOps
+    MLIRLoopLikeInterface
+    MLIRLLVMIRTransforms
+    MLIRMlirOptMain
+    MLIRParser
+    MLIRPass
+    MLIRStandardOps
+    MLIRStandardToLLVM
+    MLIRSideEffects
+    MLIRTargetLLVMIR
+    MLIRTransforms
+    MLIRTransformUtils
+    MLIRSupport
+    MLIROpenMP
+    MLIROptLib
+    MLIRTargetLLVMIRModuleTranslation
+    MLIRTranslation
+    MLIRVector
+    Threads::Threads)
+
 # 设置编译输出目录
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY /home/hacker/Workspace/onnf/build/bin)
 

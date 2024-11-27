@@ -174,3 +174,4 @@ dmypy.json
 .pytype/
 build/
 .vscode/
+results/

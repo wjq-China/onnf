@@ -1,6 +1,9 @@
 add_library(OMBuilder
+    FrontendDialectHelper.cpp
+    FrontendDialectHelper.hpp
     FrontendDialectTransformer.cpp
-    FrontendDialectTransformer.hpp)   
+    FrontendDialectTransformer.hpp
+)   
 
 
-target_link_libraries(OMBuilder onnx)
+target_link_libraries(OMBuilder onnx ${MLIRLibs})
